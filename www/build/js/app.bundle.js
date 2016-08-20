@@ -73,8 +73,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var ionic_angular_1 = require('ionic-angular');
 var ContactPage = (function () {
-    function ContactPage(navCtrl) {
+    function ContactPage(navCtrl, loadingController) {
         this.navCtrl = navCtrl;
+        this.loadingController = loadingController;
         this.user = {
             username: "",
             password: ""
@@ -83,12 +84,17 @@ var ContactPage = (function () {
     ContactPage.prototype.login = function () {
         console.log(this.user.username);
         console.log(this.user.password);
+        var loader = this.loadingController.create({
+            content: "登录中...",
+            duration: 3000
+        });
+        loader.present();
     };
     ContactPage = __decorate([
         core_1.Component({
             templateUrl: 'build/pages/contact/contact.html'
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, ionic_angular_1.LoadingController])
     ], ContactPage);
     return ContactPage;
 }());
@@ -134,7 +140,6 @@ var core_1 = require('@angular/core');
 var home_1 = require('../home/home');
 var about_1 = require('../about/about');
 var contact_1 = require('../contact/contact');
-var ionic_angular_1 = require('ionic-angular');
 var TabsPage = (function () {
     function TabsPage() {
         // this tells the tabs component which Pages
@@ -145,15 +150,14 @@ var TabsPage = (function () {
     }
     TabsPage = __decorate([
         core_1.Component({
-            templateUrl: 'build/pages/tabs/tabs.html'
+            template: "<ion-tabs>\n  <ion-tab [root]=\"tab1Root\" tabTitle=\"\u4E3B\u9875\" tabIcon=\"home\"></ion-tab>\n  <ion-tab [root]=\"tab2Root\" tabTitle=\"Talk\" tabIcon=\"information-circle\"></ion-tab>\n  <ion-tab [root]=\"tab3Root\" tabTitle=\"\u6211\u7684\" tabIcon=\"person\"></ion-tab>\n</ion-tabs>"
         }), 
         __metadata('design:paramtypes', [])
     ], TabsPage);
     return TabsPage;
 }());
 exports.TabsPage = TabsPage;
-ionic_angular_1.ionicBootstrap(TabsPage);
-},{"../about/about":2,"../contact/contact":3,"../home/home":4,"@angular/core":153,"ionic-angular":467}],6:[function(require,module,exports){
+},{"../about/about":2,"../contact/contact":3,"../home/home":4,"@angular/core":153}],6:[function(require,module,exports){
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
