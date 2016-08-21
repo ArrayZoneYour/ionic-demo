@@ -4,11 +4,7 @@ import {AboutPage} from '../about/about';
 import {ContactPage} from '../contact/contact';
 
 @Component({
-  template: `<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="主页" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Talk" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="我的" tabIcon="person"></ion-tab>
-</ion-tabs>`
+  templateUrl: 'build/pages/tabs/tabs.html'
 })
 export class TabsPage {
 
